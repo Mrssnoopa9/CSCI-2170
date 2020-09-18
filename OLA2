@@ -1,0 +1,154 @@
+//Author: Samantha Solomon
+//Class: CSCI 2170-004
+//Program Description: The program is to demonstrate the use os a self service kiosk. The user enters what menu item they want and how many. The program displays the total price as well as what they chose and the quantity
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    const double EGG_MCMUFFIN_PRICE = 2.99;
+    const double BURRITO_PRICE = 4.99;
+    const double FRUIT_YOGURT_PRICE = 3.56;
+    const double HASH_BROWN_PRICE = 1.50;
+
+    double totalPrice;
+    int selection;
+    int quantityMuffin;
+    int quantityBurrito;
+    int quantityYogurt;
+    int quantityHashBrown;
+
+    cout << "======================================" << endl;
+    cout << "Welcome to MTSU's Breakfast Menu" << endl;
+    cout << "======================================" << endl;
+    cout << "1. Egg McMuffin             ($2.99)" << endl;
+    cout << "2. Sausage Burrito          ($4.99)" << endl;
+    cout << "3. Fruit Yogurt Parfait     ($3.56)" << endl;
+    cout << "4. Hash Brown               ($1.50)" << endl;
+    cout << "5. Quit "                            << endl;
+
+    cout << "Please select your option: " << endl;
+    cin >> selection;
+
+
+switch (selection)
+    {
+        case 1:
+            cout << "The unit price for the Egg McMuffin is: " << EGG_MCMUFFIN_PRICE << endl;
+            cout << "Please enter quantity" << endl;
+            cin >> quantityMuffin;
+            if(quantityMuffin <= 0)
+                {
+                    cout << "=================================" << endl;
+                    cout << "Invalid Option!"  << endl;
+                    cout << "Thank You!" << endl;
+                    cout << "=================================" << endl;
+                }
+            else
+                {
+                totalPrice = quantityMuffin * EGG_MCMUFFIN_PRICE;
+                cout << "===========================================" << endl;
+                cout << "Your Order Information: " << endl;
+                cout << "-------------------------------------------" << endl;
+                cout << setw(28) << "Egg McMuffin: $2.99 (Unit:" << quantityMuffin << ")" << endl;
+                cout << "-------------------------------------------" << endl;
+                cout << setprecision(2) << fixed;
+                cout << setw(24) << "Total Price: $ " << totalPrice << endl;
+                cout << "============================================" << endl;
+                }
+                break;
+
+        case 2:
+            cout << "The unit price for the Sausage Burrito is: " << BURRITO_PRICE << endl;
+            cout << "Please enter quantity" << endl;
+            cin >> quantityBurrito;
+            if(quantityBurrito <= 0)
+                {
+                    cout << "=================================" << endl;
+                    cout << "Invalid Option!"  << endl;
+                    cout << "Thank You!" << endl;
+                    cout << "=================================" << endl;
+                }
+            else
+                {
+                totalPrice = quantityBurrito * BURRITO_PRICE;
+                cout << "=============================" << endl;
+                cout << "Your Order Information: " << endl;
+                cout << "-----------------------------" << endl;
+                cout << setw(28) << "Sausage Burrito: $4.99 (Unit:" << quantityBurrito << ")" << endl;
+                cout << "-----------------------------" << endl;
+                cout << setprecision(2) << fixed;
+                cout << setw(24) << "Total Price: $ " << totalPrice << endl;
+                cout << "============================================" << endl;
+                }
+                break;
+
+        case 3:
+            cout << "The unit price for the Fruit Yogurt Parfait is: " << FRUIT_YOGURT_PRICE << endl;
+            cout << "Please enter the quantity" << endl;
+            cin >> quantityYogurt;
+            if(quantityYogurt <= 0)
+                {
+                    cout << "=================================" << endl;
+                    cout << "Invalid Option!"  << endl;
+                    cout << "Thank You!" << endl;
+                    cout << "=================================" << endl;
+                }
+            else
+                {
+                totalPrice = quantityYogurt * FRUIT_YOGURT_PRICE;
+                cout << "=====================================" << endl;
+                cout << "Your Order Information: " << endl;
+                cout << "-------------------------------------" << endl;
+                cout << setw(28) << "Fruit Yogurt Parfait: $3.56 (Unit:" << quantityYogurt << ")" << endl;
+                cout << "-------------------------------------" << endl;
+                cout << setprecision(2) << fixed;
+                cout << setw(24) << "Total Price: $ " << totalPrice << endl;
+                cout << "=====================================" << endl;
+                }
+                break;
+
+        case 4:
+            cout << setprecision(2) << fixed;
+            cout << "The unit price for the Hash Brown is: " << HASH_BROWN_PRICE << endl;
+            cout << "Please enter quantity" << endl;
+            cin >> quantityHashBrown;
+            if(quantityHashBrown <= 0)
+                {
+                    cout << "=================================" << endl;
+                    cout << "Invalid Option!"  << endl;
+                    cout << "Thank You!" << endl;
+                    cout << "=================================" << endl;
+               }
+            else
+                {
+                totalPrice = quantityHashBrown * HASH_BROWN_PRICE;
+                cout << "=======================================" << endl;
+                cout << "Your Order Information: " << endl;
+                cout << "---------------------------------------" << endl;
+                cout << setw(28) << "Hash Brown: $1.50 (Unit:" << quantityHashBrown << ")" << endl;
+                cout << "---------------------------------------" << endl;
+                cout << setprecision(2) << fixed;
+                cout << setw(24) << "Total Price: $ " << totalPrice << endl;
+                cout << "=======================================" << endl;
+                }
+            break;
+
+        case 5:
+            cout << "===============================================" << endl;
+            cout << "Thank You!" << endl;
+            cout << "===============================================" << endl;
+            break;
+
+        default:
+                {
+                cout << "=============================================" << endl;
+                cout << "Invalid Option." << endl;
+                cout << "Thank You!" << endl;
+                cout << "=============================================" << endl;
+                }
+}
+return 0;
+}
