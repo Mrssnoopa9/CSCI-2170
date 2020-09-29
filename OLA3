@@ -1,0 +1,61 @@
+//Author: Samantha Solomon
+//Course-section: CSCI 2170-004
+//Due Date: Sept 28, 2020
+//Description: The program will prompt the customer to enter an interger number N, display the Nth corresponding equilateral triangle pattern and the Nth triangle number repeating the process until the user quits.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int intNumber;
+    int triangleNumber = 0;
+    char repeat;
+        cout << "================================================" << endl;
+        cout << "Welcome to the Equilateral Triangle Drawing App" << endl;
+        cout << "================================================" << endl;
+do
+{
+    triangleNumber = 0;
+    do
+    {
+        cout << "Please enter any integer number" << endl;
+        cin  >>  intNumber;
+//validate the input
+        if(intNumber <= 0)
+            {
+                cout << endl <<  "Please enter a positive integer number" << endl;
+            }
+    }while(intNumber <= 0);
+
+    //calculate the nuumber of spaces
+    int numSpaces = 2 * intNumber - 2;
+
+    //controls lines and numbers of leading spaces
+    for(int i = 0; i < intNumber; i++)
+        {
+            //draw spaces
+            for (int j = 0; j < numSpaces; j++)
+                {
+                cout << " ";
+                }
+                numSpaces--;
+
+            //draw a line with a symbol
+            for (int j = 0; j <= i; j++)
+                {
+                    cout << "* ";
+                    triangleNumber++;
+                }
+            cout << endl;
+        }
+         cout << "T" << intNumber << "=" << triangleNumber << endl;
+        cout << "---------------------------" << endl;
+        cout << endl << "Do you want to continue? (Y|N) " << endl << endl;
+        cout << "---------------------------" << endl;
+        cin >> repeat;
+        
+}while ((repeat !='N')&&(repeat!= 'n'));
+
+return 0;
+}
