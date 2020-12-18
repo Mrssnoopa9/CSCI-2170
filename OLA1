@@ -1,0 +1,39 @@
+//Samantha Solomon
+
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+
+	int withdrawAmt = 0;
+	int num1 = 1;
+	int num2 = 5;
+	int num3 = 10;
+	int num4 = 20;
+	int num5 = 50;
+	int num6 = 100;
+
+	cout << "==================================================" << endl;
+	cout << "Welcome to MTSU ATM Cash Withdrawals!" << endl;
+	cout << "==================================================" << endl;
+	cout << "Please enter the amount of money to be withdrawn: " << endl;
+	cin  >> withdrawAmt;
+	
+	cout << "The ATM is going to give you: " << endl;
+	cout << "---------------------------------" << endl;
+	cout << withdrawAmt/100 << " currency notes of 100." << endl;
+	cout << withdrawAmt%100/50 << " currency notes of 50$." << endl;
+	cout << withdrawAmt%100%50/20 << " currency notes of 20$." << endl;
+	cout << withdrawAmt%100%50%20/10 << " currency notes of 10$." << endl;
+	cout << withdrawAmt%100%50%20%10/5 << " currency notes of 5$." << endl;
+	cout << withdrawAmt%100%50%20%10%5 << " currency notes of 1$." << endl;
+	cout << "==================================================" << endl;
+	cout << "Thank you! See you next time!" << endl;
+	cout << "==================================================" << endl;
+
+
+return 0;
+}
