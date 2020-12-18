@@ -1,0 +1,210 @@
+//Author: Samantha Solomon
+//Professor: Dr. Xin Yang
+//Class-Section: CSCI 2170-004
+//Project: OLA5
+//Due Date: Oct 23rd, 2020
+//Description: This program is a phonebook management system. It will prompt the user to choose an option to display information to use the phone book
+
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+using namespace std;
+
+// Declaration of the Customer structure
+// string name
+// string address
+// string city
+// int zip
+// string phone
+struct Customer
+{
+	string name;
+	string address;
+	string city;
+	string state;
+	int zip;
+	string phone;
+};
+
+
+// Function prototypes
+void getAccountInfo(Customer &acc);
+void showInfo(vector<Customer> &accounts);
+void updateAccount(vector<Customer> &accounts, Customer acc, int pos);
+void countInfo(Customer &acc);
+void deleteAccount(vector<Customer> &accounts, int pos);
+
+int main()
+{
+	
+   //necessary variable declartion
+	int choice;
+	int pos;	
+   //structure Customer type variable
+   Customer acc;	
+   //Vector of Customer structures
+   vector<Customer> accounts;   
+   
+   cout << "========================================" << endl;
+   cout << "Welcome to the Phone Book Management App" << endl;	
+   cout << "========================================" << endl;
+
+ do
+   {
+      // Display a menu.
+	cout << "1. Enter the new account information" << endl;
+	cout << "2. Change account information" << endl;
+	cout << "3. Display all account information" << endl;
+	cout << "4. Delete an account" << endl;
+	cout << "5. Exit the program" << endl;
+
+	cout << "Enter your choice:" << endl;
+      // Get the user's choice.
+	cin >> choice;
+      // Validate the choice.
+	if(choice < 1 || choice > 5)
+	{
+		do
+		{
+			cout << "Please enter 1, 2, 3, 4, or 5" << endl;
+			cout << "Enter your choice: " << endl;
+			cin >> choice;
+		}while (choice < 1 || choice > 5);
+	}
+      // Perform the swtich case.  
+	switch(choice)
+	{
+      		//case 1: Create new account and push back to the vector
+			//Enter new account information. call the function  getAccountInfo()
+			//Push the account to the vector accounts. call the function push_back()
+				case 1:
+
+				getAccountInfo(acc);
+				cout << "You have entered information for customer number " << accounts.size();
+				accounts.push_back(acc);
+				break;	   
+      		//case 2: Change an existing account.
+			//Get the customer index number
+			//Get the new acount information. call the function getAccountInfo()
+			//Update the account in the vector. call the function updateAccount()
+				case 2:
+
+				getAccountInfo( acc);
+				updateAccount(accounts, acc, pos);
+				break;
+      		//case 3: Display all account information. 
+			//display all accounts information in the vector. call the function showInfo()
+				case 3:
+
+				showInfo(accounts);
+				break;
+      		//case 4: Delete an customer account  
+			//Get the customer index number
+			//Delete the account in the vector. call the function deleteAccount()
+				case 4:
+			
+				deleteAccount(accounts, pos);
+				break;			
+      		//case 5: Quit the program
+				cout << "Thank you very much!" << endl;
+				break;
+	}
+   } while (choice != 5);
+
+
+   return 0;
+}
+
+//********************************************************
+// Function: getAccountInfo                                      
+// This function gets account information from the user  
+// and stores it in the parameter acc, which is a    
+// structure reference variable.         
+//********************************************************
+
+void getAccountInfo(Customer &acc)
+{
+	string junk;
+	getline(cin, junk);
+	// Get the customer name
+	cout << "Customer name: ";
+	getline(cin, acc.name);
+	// Get the customer's address.
+	cout << "Customer address: ";
+	getline(cin, acc.address);
+   // Get the customer's city.
+	cout << "Customer city: ";
+	getline(cin, acc.city);
+   // Get the customer's state.
+	cout << "Customer state: ";
+	getline(cin, acc.state);
+   // Get the customer's ZIP code.
+	cout << "Customer Zip code: ";
+	cin >> acc.zip;
+	// Get the customer's phone number.
+	cout << "Customer phone number: ";
+	getline(cin, junk);
+	getline(cin, acc.phone);
+}
+
+
+//************************************************************
+// Function showInfo                                         
+// This function displays all customer account's name, address,      
+// city, state, zip code and phone number 
+// The information is passed into the Customer vector 
+// accounts
+//************************************************************
+
+void showInfo(vector<Customer> &accounts)
+{
+	for (int i = 0; i < accounts.size(); i++)
+	{
+	cout << "===================================================================================" << endl;
+	cout << left << setw(7) << "Index" << setw(15) << "Customer name" << setw(23) << "Customer address" << setw(13) << "City" << setw(5) << "State" << setw(15) << "Zip code" << setw(15) << " Phone number" << endl;
+	cout << "===================================================================================" << endl;
+	cout << setw(7) << i;
+    cout << setw(15) <<  accounts[i].name;
+    // Get the customer's address.
+    cout << setw(23) <<  accounts[i].address;
+    // Get the customer's city.
+    cout << setw(13) << accounts[i].city;
+    // Get the customer's state.
+    cout << setw(5) << accounts[i].state;
+	//Print the customers ZIP code.
+    cout << setw(15) <<  accounts[i].zip;
+	//Print the customers phone
+    cout << setw(15) << accounts[i].phone << endl;
+	cout << "====================================================================================" << endl;
+	}
+}
+
+//************************************************************
+// Function updateAccount                                       
+// This function updates the  selected customer account's name, 
+// address, city, state, zip code and phone number 
+// The new account information is passed in parameter acc
+// The index location in the vector is passed in parameter pos
+//************************************************************
+void updateAccount(vector<Customer> &accounts, Customer acc, int pos)
+{
+	accounts[pos].name = acc.name;
+	accounts[pos].address = acc.address;
+	accounts[pos].city = acc.city;
+	accounts[pos].state = acc.state;
+	accounts[pos].zip = acc.zip;
+	accounts[pos].phone = acc.phone;
+}
+
+
+//************************************************************
+// Function deleteAccount                                    
+// This function delete the selected customer account from the vector 
+// The index location of the selected account is passed in parameter pos
+//************************************************************
+void deleteAccount(vector<Customer> &accounts, int pos)
+{
+		accounts.erase(accounts.begin()+pos); 
+}
